@@ -29,14 +29,16 @@ public class UserController {
     private UserMapper userMapper;
 
     @GetMapping("/list")
-    public Result<?> list(@RequestParam(defaultValue = "1") Integer pageNum,@RequestParam(defaultValue = "20") Integer pageSize,@RequestParam(defaultValue = "") String search) {
+    public Result<?> list(@RequestParam(defaultValue = "1") Integer pageNum,
+                          @RequestParam(defaultValue = "20") Integer pageSize,
+                          @RequestParam(defaultValue = "") String search) {
         LambdaQueryWrapper<User1> wrapper= Wrappers.<User1>lambdaQuery();
 
         if(StrUtil.isNotBlank(search))
         {
             wrapper.like(User1::getName,search);
         }
-     Page<User1> userPage=userMapper.selectPage(new Page<>(pageNum,pageSize),wrapper);
+      Page<User1> userPage=userMapper.selectPage(new Page<>(pageNum,pageSize),wrapper);
       return Result.success(userPage);
 
 

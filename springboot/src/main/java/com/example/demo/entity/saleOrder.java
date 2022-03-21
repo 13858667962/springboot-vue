@@ -11,7 +11,7 @@ import lombok.Data;
 //销售订单
 public class saleOrder {
     @TableId()
-    private int saleOrderCode;
+    private String saleOrderCode;
 
     private String saleOrderType;
     private String signDate;

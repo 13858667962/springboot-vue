@@ -12,8 +12,7 @@ import java.util.List;
 
 @Mapper
 @Component
-@Repository
 public interface SaleorderPMapper extends BaseMapper<ItemInfo> {
-@Select("select distinct a.Product_id,b.Product_name from SbSaleorderDetaii a,JcProductInfoTab b where a.Product_id=b.Product_id")
-List<SaleorderDetail> queryAllSaleorderDetail();
+    @Select("select distinct a.Product_id,b.Product_name from SbSaleorderDetaii a,JcProductInfoTab b where a.Product_id=b.Product_id")
+    List<SaleorderDetail> queryAllSaleorderDetail();
 }
