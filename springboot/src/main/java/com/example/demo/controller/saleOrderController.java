@@ -28,10 +28,7 @@ public class saleOrderController {
     saleOrderServiceImpl saleOrderService;
     @Resource
     saleOrderMapper saleOrderMapper;
-    @Resource
-    SaleorderMainMapper saleorderMainMapper;
-    @Resource
-    SaleorderDetailMapper saleorderDetailMapper;
+
 
     //该方法无用
     @PostMapping
@@ -43,6 +40,7 @@ public class saleOrderController {
         return Result.success();
     }
 
+    //分页查询数据库所有
     @GetMapping("/list")
     public Result<?> list(@RequestParam(defaultValue = "1") Integer pageNum,
                           @RequestParam(defaultValue = "5") Integer pageSize,
@@ -56,7 +54,7 @@ public class saleOrderController {
     }
 
 
-    //查询数据库所有
+    //查询数据库所有，该方法已被分页功能的list取代
     @GetMapping(value = "/query")
     public Result<?> get() {
         List<saleOrder> list = saleOrderMapper.queryAllUser();
